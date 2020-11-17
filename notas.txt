@@ -1,0 +1,3 @@
+Client ID bf03545735dd4406bad2955d38fce23e
+
+Client Secret 47638e1f5f24469aa2c5fb4822d638c1

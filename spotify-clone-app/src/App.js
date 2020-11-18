@@ -37,11 +37,10 @@ function App() {
     }
   }, []);
 
-  console.log(user);
-  console.log(token);
-
   return (
-    <div className="App">{token ? <Player /> : <Login />}</div> // si hay token estoy loggueado
+    <div className="App">
+      {token ? <Player spotify={spotify} /> : <Login />}
+    </div> // si hay token estoy loggueado
   );
 }
 

@@ -8,7 +8,7 @@ export const initialState = {
   top_artists: null,
   playing: false,
   item: null,
-  token: null,
+  token: "BQDcVAboJxeDhWItHoiaCCjOOXKkWgMeAk6MVAu9ygcnGfg_J8…UK5TZmrrZQ7IFozST7n_ApaIYMi3-kyDFO_RJI1zFMkOSCXHQ",
 };
 
 // the reducer is some sort of listener that listens all the actions ant the dispatchs.

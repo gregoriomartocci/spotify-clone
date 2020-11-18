@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Login from "./Components/Login";
 import "./App.css";
 import { getTokenFromUrl } from "./spotify";
-import SpotifyWebApi from "spotify-web-api-js"
-import Player from "./Components/Player"
-import {useDataLayerValue } from "./DataLayer"
+import SpotifyWebApi from "spotify-web-api-js";
+import Player from "./Components/Player";
+import { useDataLayerValue } from "./DataLayer";
 
 const spotify = new SpotifyWebApi();
 
@@ -14,8 +14,7 @@ const spotify = new SpotifyWebApi();
 // dispatch is like a speciall gun to shoot at DataLayer.
 
 function App() {
-  const [token, setToken] = useState(null); //short term memory store
-  const [{} , dispatch] = useDataLayerValue();
+  const [{ user, token }, dispatch] = useDataLayerValue();
 
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -23,21 +22,26 @@ function App() {
     const _token = hash.access_token;
 
     if (_token) {
-      setToken(_token);
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      });
 
-      spotify.setAccessToken(_token) // giving acces to the object instance
-      spotify.getMe().then(user => {
-        console.log(user)
+      spotify.setAccessToken(_token); // giving acces to the object instance
+      spotify.getMe().then((user) => {
         dispatch({
-          type:"SET_USER",
-          user:user
-        })
-      })
+          type: "SET_USER",
+          user: user,
+        });
+      });
     }
   }, []);
 
+  console.log(user);
+  console.log(token);
+
   return (
-    <div className="App">{token ? <Player/> : <Login />}</div>  // si hay token estoy loggueado
+    <div className="App">{token ? <Player /> : <Login />}</div> // si hay token estoy loggueado
   );
 }
 

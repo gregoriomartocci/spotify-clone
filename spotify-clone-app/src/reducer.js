@@ -1,4 +1,3 @@
-
 import { findAllByDisplayValue } from "@testing-library/react";
 
 export const initialState = {
@@ -9,7 +8,10 @@ export const initialState = {
   top_artists: null,
   playing: false,
   item: null,
+  token: null,
 };
+
+// the reducer is some sort of listener that listens all the actions ant the dispatchs.
 
 const reducer = (state, action) => {
   console.log(action);

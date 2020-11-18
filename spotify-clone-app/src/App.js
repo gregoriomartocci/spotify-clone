@@ -28,6 +28,10 @@ function App() {
       spotify.setAccessToken(_token) // giving acces to the object instance
       spotify.getMe().then(user => {
         console.log(user)
+        dispatch({
+          type:"SET_USER",
+          user:user
+        })
       })
     }
   }, []);
